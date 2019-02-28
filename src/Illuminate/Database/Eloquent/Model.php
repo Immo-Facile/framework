@@ -611,12 +611,11 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         $keys = $this->getKeyName();
         $values = $this->getKeyForSaveQuery();
 
-        if(is_array($keys)) {
-            $query->where(array_map(function($key, $value) {
+        if (is_array($keys)) {
+            $query->where(array_map(function ($key, $value) {
                 return [$key, '=', $value];
             }, $keys, $values));
-        }
-        else {
+        } else {
             $query->where($keys, '=', $values);
         }
 
